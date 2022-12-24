@@ -11,8 +11,11 @@ module.exports = {
     deployer: {
       default: 0,
     },
-    player: {
-      default: 1
+    adrs1: {
+      default: 1,
+    },
+    adrs2: {
+      default: 2,
     }
   },
   defaultNetwork: "hardhat",
@@ -22,7 +25,7 @@ module.exports = {
     },
     goerli: {
       url: process.env.GOERLI_RPC_URL,
-      accounts: [process.env.PRIVATE_KEY],
+      accounts: [process.env.PRIVATE_KEY_DEPLOYER, process.env.PRIVATE_KEY_ADRS1, process.env.PRIVATE_KEY_ADRS2],
       chainId: 5,
       blockConfirmations: 6,
     },
@@ -40,6 +43,11 @@ module.exports = {
     token: "MATIC",
   },
   mocha : {
-    timeout: 20000
+    timeout: 400000
+  },
+  etherscan : {
+    apiKey: {
+      goerli: process.env.ETHERSCAN_API_KEY,
+    }
   }
 };

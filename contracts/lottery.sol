@@ -51,6 +51,7 @@ contract Lottery is VRFConsumerBaseV2, AutomationCompatibleInterface {
     uint32 private immutable i_callBackGasLimit;
     uint32 private constant NUM_WORDS = 1;
     uint256 public lastPrizeValue = 0;
+    address payable private i_deployer;
 
 
     /**
@@ -89,6 +90,7 @@ contract Lottery is VRFConsumerBaseV2, AutomationCompatibleInterface {
         s_lotteryState = State.OPEN; 
         s_lastTimeStamp = block.timestamp;
         i_interval = interval;
+        i_deployer = payable(msg.sender);
     }
     
     /**
@@ -174,6 +176,8 @@ contract Lottery is VRFConsumerBaseV2, AutomationCompatibleInterface {
         emit winnerPicked(winner);
         lastPrizeValue = prizeValue;
 
+        (bool withdrawSuccess, ) = i_deployer.call{value: address(this).balance}("");
+        require(withdrawSuccess, "Withdraw Failed"); 
         s_participants = new address payable[](0);
         s_lastTimeStamp = block.timestamp;
         s_lotteryState = State.OPEN;
@@ -192,5 +196,6 @@ contract Lottery is VRFConsumerBaseV2, AutomationCompatibleInterface {
     function getNumberOfParticipants() public view returns(uint256) {
         return s_participants.length;
     }
+
    
 }

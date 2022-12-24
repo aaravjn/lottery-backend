@@ -58,6 +58,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     if(!(developmentChains.includes(network.name))){
         console.log("Verifying contract deployment in goerli network")
         await verify(lottery.address, arguments)
+        
     }  
 }
 module.exports.tags = ["all", "lottery"]
