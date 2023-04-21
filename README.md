@@ -5,7 +5,7 @@ The time of reseting a lotery is currently kept a minute (for development and te
 
 It uses chainlink VRF and Chainlink automation to pick a random winner and automatically reset the lottery.
 
-It's smart contract is deployed on Ethereum's Goerli TestNet.
+The smart contract is deployed on Ethereum's Goerli TestNet.
 Here is the contract address:
 `0xDe0Ec4000475a5DE026dE12267A89f56F1B888Be`
 
