@@ -1,6 +1,6 @@
 # DeLott
 
-This is a decentralized lottery system which takes an entry fee from the user. If there is only 1 participant in the lottery, the entire money is returned back to the participant. If there are more than 1 participant in the lottery, 80% of the total prize of money is given back to the randomly chosen winner and the rest 20% is kept as the platform's profit.
+This is a decentralized lottery system which takes an entry fee from the user. If there is only 1 participant in the lottery, the entire money is returned back to the participant. If there are more than 1 participant in the lottery, 80% of the total prize of money is given back to a randomly chosen winner and the rest 20% is kept as the platform's profit.
 The time of reseting a lotery is currently kept a minute (for development and testing purposes).
 
 It uses chainlink VRF and Chainlink automation to pick a random winner and automatically reset the lottery.
